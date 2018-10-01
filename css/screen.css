@@ -2,12 +2,48 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 400;
+    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 600;
+    src: url("../fonts/Inter-UI-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 700;
+    src: url("../fonts/Inter-UI-Bold.woff2") format("woff2");
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
-
+    --color-alpha-xx-light: #DCEAFF;
+    --color-alpha-x-light: #81ADF0;
+    --color-alpha-light: #4F95FF;
+    --color-alpha: #3385FF;
+    --color-alpha-dark: #2E77E6;
+    --color-alpha-x-dark: #1B4186;
+    --color-neutral-xxxx-light: #F5F6FA;
+    --color-neutral-xxx-light: #E2E3E7;
+    --color-neutral-xx-light: #CACCD4;
+    --color-neutral-x-light: #B5B6C0;
+    --color-neutral-light: #A0A1AD;
+    --color-neutral: #8B8C9A;
+    --color-neutral-dark: #757787;
+    --color-neutral-x-dark: #606274;
+    --color-neutral-xx-dark: #4B4C60;
+    --color-neutral-xxx-dark: #35374D;
+    --color-neutral-xxxx-dark: #20223A;
+    --box-shadow-inset: inset 0 1px 1px #20223a15;
+    --beta-gradient: linear-gradient(-45deg, var(--color-alpha-dark), var(--color-alpha-light));
 }
 
 /* CSS variables here */
@@ -25,17 +61,14 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: "Inter UI Web", Helvetica, arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
@@ -47,13 +80,13 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
+    background: var(--color-alpha);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
+    background: var(--color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -79,9 +112,7 @@ img {
     Default markup for typographic elements
 */
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     font-weight: 600;
 }
 
@@ -103,31 +134,21 @@ h3 {
     margin: 0 0 24px;
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     font-size: 20px;
     line-height: 24px;
     margin: 0 0 24px;
 }
 
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
+p, ol, ul, dl, table, address, figure {
     margin: 0 0 24px;
 }
 
-ul,
-ol {
+ul, ol {
     padding-left: 24px;
 }
 
-li ul,
-li ol {
+li ul, li ol {
     margin-bottom: 0;
 }
 
@@ -158,18 +179,20 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: var(--color-alpha);
     transition: all .1s ease-in-out;
 }
 
-a:visited,
-a:active {
-    color: HotPink;
+a:visited, a:active {
+    color: var(--color-alpha-dark);
 }
 
-a:hover,
-a:focus {
-    color: DeepPink;
+a:hover, a:focus {
+    color: var(--color-alpha-dark);
+}
+
+label, input {
+    display: block;
 }
 
 /*------------------------------------*\
@@ -189,6 +212,17 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.o-row--alpha {
+    background-color: var(--color-neutral-xxxx-light);
+}
+
+.o-row--beta {
+    background: var(--beta-gradient);
 }
 
 /* size modifiers */
@@ -226,7 +260,8 @@ a:focus {
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    max-width: 79.5em;
+    /* 79.5 * 16px = 1272 */
     width: 100%;
 }
 
@@ -240,19 +275,18 @@ a:focus {
     position: relative;
 }
 
-.o-section + .o-section {
+.o-section+.o-section {
     padding-top: 24px;
 }
 
 @media (min-width: 768px) {
-    .o-section--lg + .o-section--lg,
-    .o-section--xl + .o-section--xl {
+    .o-section--lg+.o-section--lg, .o-section--xl+.o-section--xl {
         padding-top: 48px;
     }
 }
 
 @media (min-width: 992px) {
-    .o-section--xl + .o-section--xl {
+    .o-section--xl+.o-section--xl {
         padding-top: 72px;
     }
 }
@@ -282,7 +316,7 @@ a:focus {
     margin: 0 -12px;
 }
 
-.o-layout--gutter > .o-layout__item {
+.o-layout--gutter>.o-layout__item {
     padding: 0 12px;
 }
 
@@ -290,7 +324,7 @@ a:focus {
     margin: 0 -6px;
 }
 
-.o-layout--gutter-sm > .o-layout__item {
+.o-layout--gutter-sm>.o-layout__item {
     padding: 0 6px;
 }
 
@@ -298,7 +332,7 @@ a:focus {
     margin: 0 -24px;
 }
 
-.o-layout--gutter-lg > .o-layout__item {
+.o-layout--gutter-lg>.o-layout__item {
     padding: 0 24px;
 }
 
@@ -306,7 +340,7 @@ a:focus {
     margin: 0 -48px;
 }
 
-.o-layout--gutter-xl > .o-layout__item {
+.o-layout--gutter-xl>.o-layout__item {
     padding: 0 48px;
 }
 
@@ -406,18 +440,14 @@ a:focus {
     width: auto;
     overflow: visible;
     background: transparent;
-
     /* inherit font & color from ancestor */
     color: inherit;
     font: inherit;
-
     /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
     line-height: normal;
-
     /* Corrects font smoothing for webkit */
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
-
     /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
 }
@@ -432,17 +462,83 @@ a:focus {
     Website main logo
 */
 
+.c-logo {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
+}
+
+.c-logo__symbol {
+    display: block;
+    height: 100%;
+}
+
+.c-logo__path--title {
+    fill: var(--color-neutral-xxxx-dark);
+}
+
+.c-logo__path--outer {
+    fill: var(--color-alpha);
+}
+
+.c-logo__path--inner {
+    fill: var(--color-alpha-x-dark);
+}
+
+.c-logo__path--inverse {
+    fill: #FFF;
+}
+
 /*
     Component: Card
     ---
     Card with box shadow
 */
 
+.c-card {
+    background-color: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+    border-radius: 3px;
+}
+
+.c-card__header {
+    padding: 48px 48px 0;
+}
+
+.c-card__body {
+    padding: 48px 48px;
+}
+
+.c-card__title {
+    font-size: 112.5%;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.c-card__footer {
+    border-top: 1px solid var(--color-neutral-xxx-light);
+    display: flex;
+    justify-content: center;
+    padding: 24px 24px 0;
+    color: var(--color-neutral-dark);
+    font-size: 14px;
+}
+
 /*
     Component: Forms
     ---
     Everything form related here
 */
+
+.c-form-field {}
+
+.c-form-field--option {
+    display: flex;
+    justify-content: left;
+}
 
 /*
     Component: Input
@@ -451,10 +547,23 @@ a:focus {
 */
 
 .c-input {
-
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid var(--color-neutral-xxx-light);
+    border-radius: 4px;
+    font-family: "Inter UI Web";
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px 16px;
+    box-shadow: var(--box-shadow-inset)
 }
 
 .c-input:focus {
+    outline: none;
+    border-color: var(--color-alpha-x-light);
+    box-shadow: 3px 3px 1px 1px var(--color-alpha-xx-light);
 }
 
 /*
@@ -464,14 +573,31 @@ a:focus {
 */
 
 .c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: var(--color-neutral-x-dark);
+}
 
+.c-label--checkbox {
+    margin: 0 0 0 8px;
+}
+
+/*
+    Component: forgot password
+    ---
+*/
+
+.c-password {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
 }
 
 /* If a input is focused within the form-field class change te color of the label */
 
-.c-form-field:focus-within .c-label {
-
-}
+.c-form-field:focus-within .c-label {}
 
 /*
     Custom option
@@ -479,22 +605,15 @@ a:focus {
     Custom checkboxes & radio buttons
 */
 
-.c-custom-option {
-
-}
+.c-custom-option {}
 
 /* Hide the actual input but still be able to focus on it */
-.c-custom-option__input {
 
-}
+.c-custom-option__input {}
 
-.c-custom-option__label {
+.c-custom-option__label {}
 
-}
-
-.c-custom-option__fake-option {
-
-}
+.c-custom-option__fake-option {}
 
 .c-custom-option__symbol {
     /* Hide the svg initially */
@@ -502,29 +621,21 @@ a:focus {
 
 /* focused state */
 
-.c-custom-option__input:focus + .c-custom-option__label .c-custom-option__fake-option {
-
-}
+.c-custom-option__input:focus+.c-custom-option__label .c-custom-option__fake-option {}
 
 /* checked state */
 
-.c-custom-option__input:checked + .c-custom-option__label .c-custom-option__fake-option {
+.c-custom-option__input:checked+.c-custom-option__label .c-custom-option__fake-option {}
 
-}
-
-.c-custom-option__input:checked + .c-custom-option__label .c-custom-option__symbol {
+.c-custom-option__input:checked+.c-custom-option__label .c-custom-option__symbol {
     /* Show the svg when the invisible checkbox is checked */
 }
 
-.c-custom-option__input:checked + .c-custom-option__label .c-custom-option__path {
-
-}
+.c-custom-option__input:checked+.c-custom-option__label .c-custom-option__path {}
 
 /* focused & checked state */
 
-.c-custom-option__input:focus:checked + .c-custom-option__label .c-custom-option__fake-option {
-
-}
+.c-custom-option__input:focus:checked+.c-custom-option__label .c-custom-option__fake-option {}
 
 /*
     Component: Button
@@ -533,24 +644,30 @@ a:focus {
 */
 
 .c-button {
-
+    height: 48px;
+    width: 100%;
+    background-color: var(--color-alpha);
+    color: #FFFFFF;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .c-button:hover {
-
+    background-color: #var(--color-alpha-light);
 }
 
 .c-button:focus {
-
+    outline: none;
+    background-color: var(--color-alpha-x-light);
 }
 
 .c-button:active {
-
+    background-color: var(--color-alpha-x-light);
 }
 
-.c-button--block {
-
-}
+.c-button--block {}
 
 /*------------------------------------*\
 #UTILITIES
@@ -629,7 +746,6 @@ a:focus {
 .u-max-width-none {
     max-width: none !important;
 }
-
 
 /*
     Utilities: align
@@ -893,9 +1009,7 @@ No media query since this is the default in mobile first design
 */
 
 @media print {
-    *,
-    *:before,
-    *:after {
+    *, *:before, *:after {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -903,8 +1017,7 @@ No media query since this is the default in mobile first design
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a,
-    a:visited {
+    a, a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -917,15 +1030,13 @@ No media query since this is the default in mobile first design
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]:after, a[href^="javascript:"]:after {
         content: "";
     }
     pre {
         white-space: pre-wrap !important;
     }
-    pre,
-    blockquote {
+    pre, blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -936,18 +1047,14 @@ No media query since this is the default in mobile first design
     thead {
         display: table-header-group;
     }
-    tr,
-    img {
+    tr, img {
         page-break-inside: avoid;
     }
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }
